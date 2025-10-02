@@ -89,7 +89,7 @@ if __name__ == "__main__":
         # Verifica se é o 1º dia útil
         first_bd = first_business_day_of_month(HOJE_DATE.year, HOJE_DATE.month, FERIADOS)
         if HOJE_DATE != first_bd:
-            log.info(f"Hoje não é o 1º dia útil do mês (o primeiro é {first_bd}). Encerrando.")
+            log.info(f"Hoje não é o 1º dia útil do mês (o 1º dia útil é {first_bd}). Encerrando...")
             sys.exit(0)
         
         mes_anterior_str = mes_anterior()
