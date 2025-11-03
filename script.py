@@ -32,6 +32,11 @@ def first_business_day_of_month(y: int, m: int, feriados: holidays.HolidayBase) 
         d += timedelta(days=1)
     return d
 
+# Verifica se é o 1º dia útil, se não for já encerra o sistema silenciosamente
+first_bd = first_business_day_of_month(HOJE_DATE.year, HOJE_DATE.month, FERIADOS)
+if HOJE_DATE != first_bd:
+    sys.exit(0)
+
 # LOGGING
 os.makedirs(LOGDIR, exist_ok=True)
 logfile = os.path.join(LOGDIR, "run.log")
@@ -86,11 +91,6 @@ def open_mailto(to, cc, subject, body):
 if __name__ == "__main__":
     
     try:
-        # Verifica se é o 1º dia útil
-        first_bd = first_business_day_of_month(HOJE_DATE.year, HOJE_DATE.month, FERIADOS)
-        if HOJE_DATE != first_bd:
-            log.info(f"Hoje não é o 1º dia útil do mês (o 1º dia útil é {first_bd}). Encerrando...")
-            sys.exit(0)
         
         mes_anterior_str = mes_anterior()
         saudacao = saudacao_atual()
