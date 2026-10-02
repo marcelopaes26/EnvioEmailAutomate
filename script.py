@@ -11,7 +11,6 @@ import holidays
 # ENV
 load_dotenv()
 LOGDIR = os.getenv('LOGS')
-EMAIL_TO_DROID = os.getenv('EMAIL_TO_DROID')
 EMAIL_TO_DP = os.getenv('EMAIL_TO_DP')
 EMAIL_CC = os.getenv('EMAIL_CC')
 
@@ -97,16 +96,6 @@ if __name__ == "__main__":
         
         # Mensagens: campos curtos (ideais para mailto)
         mensagens = [
-            {
-                "to": f"{EMAIL_TO_DROID}",
-                "cc": f"{EMAIL_CC}",
-                "subject": f"Relatório LSE - Mês {mes_anterior_str}",
-                "body": (
-                    f"{saudacao}, tudo bem?\n\n"
-                    f"Poderiam nos encaminhar o relatório do LSE do mês anterior ({mes_anterior_str}), por gentileza?\n\n"
-                    "Desde já, agradecemos."
-                ),
-            },
             {
                 "to": f"{EMAIL_TO_DP}",
                 "cc": f"{EMAIL_CC}",
